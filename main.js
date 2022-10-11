@@ -3,7 +3,7 @@ passSaved = "1234";
 
 
 function login() {
-    
+
     let ingresar = false;
 
     for (let i = 2; i >= 0; i--) {
@@ -29,53 +29,52 @@ function login() {
 }
 
 
+login()
 
-
-
-
-
-
-if (login()) {
-    let precio1 = 2000
-    let precio2 = 2500
-    let precio3 = 2000
-
-
-    let opcion = prompt('Elegí una opción: \n1- curso python. \n2 - curso javascript. \n3 - curso php.  \nPresioná X para finalizar.');
-
-
-    while (opcion != 'X' && opcion != 'x') {
-
-        switch (opcion) {
-
-            case '1':
-                alert('Curso Python $ ' + precio1);
-                break;
-
-            case '2':
-                alert('Curso javascript $ ' + precio2);
-
-                break;
-
-            case '3':
-
-                alert('Curso php $ ' + precio3);
-                break;
-
-            default:
-                alert('Elegiste una opción inválida');
-                break;
-
-        }
-
-        opcion = prompt('Elegí una opción: \n1- curso python. \n2 - curso javascript. \n3 - curso php.  \nPresioná X para finalizar.');
-
-
+class Articulo {
+    constructor(titulo, marca, rubro, precio) {
+        this.titulo = titulo;
+        this.marca = marca;
+        this.rubro = rubro;
+        this.precio = parseInt(precio);
     }
-
 }
 
 
-alert('Gracias por su compra');
+const articulos = [
+    new Articulo("Consola Ps4", "Playstation", "Videojuegos", 60000),
+    new Articulo("Control dual shock", "Playstation", "accesorios", 13000),
+    new Articulo("Volante de carrera", "Logitech", "Accesorios", 50000),
+    new Articulo("Mouse", "Razer", "Computacion", 8000)
 
 
+]
+
+let continuar = true;
+
+while (continuar) {
+    let ingreso = prompt("Ingresa los datos del Producto: titulo, Marca, Rubro, Precio,  separados por una barra diagonal (/). Ingresa X para finalizar'");
+
+    if (ingreso.toUpperCase() == "X") {
+        continuar = false;
+        break;
+    }
+
+    let datos = ingreso.split("/");
+    const articulos = new Articulo(datos[0], datos[1], datos[2], datos[3]);
+}
+
+
+
+alert(crearStringResultado);
+
+let productoSelecionado = prompt("Que producto esta buscando?");
+
+const busqueda = articulos.filter((Articulo) => Articulo.titulo.toLowerCase().includes(productoSelecionado.toLowerCase()))
+
+if (busqueda.length == 0) {
+    alert('Lo sentimos. No encontramos coincidencias en nuestro catálogo');
+} else {
+    const imprimible = busqueda.map((Articulo) => Articulo.titulo);
+    alert('Los productos de nuestro catálogo,  que coinciden parcial o totalmente con esta búsqueda, son:\n- ' + imprimible.join('\n- '));
+}
